@@ -159,3 +159,8 @@ then `terraform init`,
 `terraform plan` and `terraform apply`
 
 SSH login to the new VM, wait until `/var/log/cloud-init-output.log` is finished.
+```
+[...]
+
+Cloud-init v. 23.1.2-0ubuntu0~23.04.1 finished at Fri, 08 Dec 2023 23:20:04 +0000. Datasource DataSourceGCELocal.  Up 1117.00 seconds
+```
