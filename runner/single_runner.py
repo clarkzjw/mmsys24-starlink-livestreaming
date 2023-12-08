@@ -65,6 +65,11 @@ def run_once(EXPERIMENT_ID: str, exp: Experiment) -> None:
         else:
             params["catchupMechanism"] = "liveCatchupModeDefault"
 
+        # if CATCH_UP is specified in experiment.json
+        # it overrides the catchupMechanism
+        if len(exp.CATCH_UP) > 0:
+            params["catchupMechanism"] = exp.CATCH_UP
+
         url = URL + urllib.parse.urlencode(params)
         logger.info(url)
 

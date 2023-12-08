@@ -43,6 +43,7 @@ class Experiment:
     MAX_CATCHUP_PLAYBACK_RATE: float
     EMULATION: bool = False
     CMAB_ALPHA: float = 0.5
+    CATCH_UP: str
 
     
     def __init__(self, obj: dict):
@@ -62,6 +63,8 @@ class Experiment:
             self.EMULATION = bool(obj["EMULATION"])
         if "CMAB_ALPHA" in obj.keys():
             self.CMAB_ALPHA = float(obj["CMAB_ALPHA"])
+        if "CATCH_UP" in obj.keys():
+            self.CATCH_UP = obj["CATCH_UP"]
 
 
 BATCH_JSON = "/batch.json"
