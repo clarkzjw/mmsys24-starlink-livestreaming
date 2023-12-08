@@ -22,4 +22,4 @@ VOLUME /figures
 
 ENV PYTHONUNBUFFERED=1
 
-CMD ["python", "batch_runner.py"]
+CMD ["poetry", "run", "python", "batch_runner.py"]

@@ -27,7 +27,7 @@ services:
     image: clarkzjw/dashjs-runner:master
     privileged: true
     volumes:
-      - ./batch-emu-mmsys-abrCMAB-1-6s.json:/batch.json
+      - ./batch.json:/batch.json
       - ./figures:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
