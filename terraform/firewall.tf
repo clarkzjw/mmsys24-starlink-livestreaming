@@ -41,18 +41,7 @@ resource "google_compute_firewall" "irtt" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_firewall" "monitoring" {
-  name    = "monitoring"
-  network = google_compute_network.vpc_default.id
-
-  allow {
-    protocol = "tcp"
-    ports    = ["8086", "3000"]
-  }
-  source_ranges = ["0.0.0.0/0"]
-}
-
-resource "google_compute_firewall" "ping" {
+resource "google_compute_firewall" "icmp" {
   name    = "icmp"
   network = google_compute_network.vpc_default.id
 
@@ -62,8 +51,8 @@ resource "google_compute_firewall" "ping" {
   source_ranges = ["0.0.0.0/0"]
 }
 
-resource "google_compute_firewall" "quic" {
-  name    = "quic"
+resource "google_compute_firewall" "http" {
+  name    = "http"
   network = google_compute_network.vpc_default.id
 
   allow {
@@ -76,26 +65,4 @@ resource "google_compute_firewall" "quic" {
   }
   
   source_ranges = ["0.0.0.0/0"]
-}
-
-resource "google_compute_firewall" "allowall_ipv4" {
-  name    = "allowallipv4"
-  network = google_compute_network.vpc_default.id
-
-  allow {
-    protocol = "all"
-  }
-  
-  source_ranges = ["0.0.0.0/0"]
-}
-
-resource "google_compute_firewall" "allowall_ipv6" {
-  name    = "allowallipv6"
-  network = google_compute_network.vpc_default.id
-
-  allow {
-    protocol = "all"
-  }
-  
-  source_ranges = ["0::0/0"]
 }

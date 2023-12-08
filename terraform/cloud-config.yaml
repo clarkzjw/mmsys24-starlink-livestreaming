@@ -4,8 +4,8 @@ write_files:
 runcmd:
   - export DEBIAN_FRONTEND=noninteractive
   - sudo apt-get update
-  - sudo apt install wget curl rsync htop build-essential git cmake pkg-config libssl-dev golang screen gnupg2 ca-certificates lsb-release ubuntu-keyring vnstat net-tools -y
-  - sudo apt install python3 python3-dev python3-pip python3-virtualenv -y
+  - sudo apt-get install wget curl rsync htop build-essential git cmake pkg-config libssl-dev golang screen gnupg2 ca-certificates lsb-release ubuntu-keyring vnstat net-tools -y
+  - sudo apt-get install python3 python3-dev python3-pip python3-virtualenv -y
   - sudo apt-get purge -y man-db
   - sudo apt-get upgrade -y
   - sudo systemctl stop snapd

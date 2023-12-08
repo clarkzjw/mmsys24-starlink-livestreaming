@@ -25,9 +25,6 @@ resource "google_compute_instance" "vm_default" {
   network_interface {
     subnetwork = google_compute_subnetwork.subnet_default.id
 
-    ipv6_access_config {
-      network_tier = "PREMIUM"
-    }
     access_config {
       # Include this section to give the VM an ephemeral external IP address
     }

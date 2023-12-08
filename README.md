@@ -135,3 +135,27 @@ MP4Box -dash 2000 -frag 500 -profile live -out out -segment-timeline -url-templa
 ### Fast Switch
 
 + Disable Fast Switch according to MMSys 2023 BBC R&D paper?
+
+
+## Install Terraform
+
+https://developer.hashicorp.com/terraform/install
+
+
+## Install gcloud CLI
+
+https://cloud.google.com/sdk/docs/install
+
+then run `gcloud init`
+
+## Terraform Provision VM
+
+edit `terraform.tfvars`
+
+then `terraform init`, 
+
+`gcloud auth application-default login`
+
+`terraform plan` and `terraform apply`
+
+SSH login to the new VM, wait until `/var/log/cloud-init-output.log` is finished.

@@ -10,6 +10,5 @@ resource "google_compute_subnetwork" "subnet_default" {
   region        = var.gcp_region
   network       = google_compute_network.vpc_default.id
 
-  stack_type       = "IPV4_IPV6"
-  ipv6_access_type = "EXTERNAL"
+  stack_type       = "IPV4_ONLY"
 }
