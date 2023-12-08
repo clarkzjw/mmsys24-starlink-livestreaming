@@ -1,0 +1,15 @@
+FROM --platform=$BUILDPLATFORM node:18.16.1
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+RUN apt-get update && apt-get install iputils-ping net-tools -y
+
+ADD https://api.github.com/repos/clarkzjw/dash.js/git/refs/heads/starlink version.json
+
+RUN git clone -b starlink --depth 1 https://github.com/clarkzjw/dash.js.git
+
+WORKDIR dash.js
+
+RUN npm install
+
+CMD ["npm", "run", "start"]

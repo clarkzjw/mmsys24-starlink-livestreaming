@@ -1,0 +1,114 @@
+version: '3.1'
+services:
+  dashjs:
+    image: clarkzjw/dashjs:master
+    ports:
+      - "3000"
+    restart: always
+    depends_on:
+      - pyodide
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.101
+
+  chrome:
+    image: selenium/standalone-chrome:4.10.0-20230607
+    shm_size: 2gb
+    environment:
+      - SE_NODE_SESSION_TIMEOUT=36000
+    ports:
+      - 4444:4444
+      - 7900:7900
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.102
+
+  runner:
+    image: clarkzjw/dashjs-runner:master
+    privileged: true
+    volumes:
+      - ./experiments/batch-gcp-1-3s.json:/batch.json
+      - ./figures:/figures
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WORKDIR=${PWD}
+    depends_on:
+      - dashjs
+      - chrome
+      - stat-server
+      - mongo
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.103
+
+  stat-server:
+    image: clarkzjw/dashjs-stats-server:master
+    ports:
+      - "8000"
+    environment:
+      LATENCY_TEST_INTERVAL_SECONDS: 1
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.104
+
+  mongo:
+    image: mongo:4.4.22
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.105
+    volumes:
+      - mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: starlink
+      MONGO_INITDB_ROOT_PASSWORD: starlink
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.106
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: starlink
+      ME_CONFIG_MONGODB_ADMINPASSWORD: starlink
+      ME_CONFIG_MONGODB_URL: mongodb://starlink:starlink@mongo:27017/
+
+  livesim2:
+    image: clarkzjw/dashjs-livesim2:master
+    ports:
+      - "8888"
+    restart: always
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.108
+
+  pyodide:
+    image: clarkzjw/dashjs-pyodide:master
+    ports:
+      - "80"
+    restart: always
+    networks:
+      dashjs:
+        ipv4_address: 192.167.0.109
+
+volumes:
+  mongodb:
+
+networks:
+  dashjs:
+    name: dashjs
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: 'true'
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.167.0.0/24"
+          gateway: "192.167.0.1"

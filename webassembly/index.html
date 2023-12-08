@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- download pyodide-0.23.4.tar.bz2 from https://github.com/pyodide/pyodide/releases -->
+      <script src="http://192.167.0.109/pyodide/pyodide.js"></script>
+  </head>
+  <body>
+    Pyodide test page <br>
+    Open your browser console to see Pyodide output
+    <script type="text/javascript">
+      async function main(){
+        requirements = [
+            "pandas",
+            "matplotlib",
+            "numpy",
+            "Pillow",
+            "scikit-learn",
+            "scipy",
+            "http://192.167.0.109/mabwiser-2.7.0-py3-none-any.whl",
+        ]
+        console.log("Loading Pyodide...");
+        let pyodide = await loadPyodide();
+
+        console.log("Install requirements...");
+        await pyodide.loadPackage(requirements);
+
+        result = pyodide.runPython(`
+            from mabwiser.mab import MAB, LearningPolicy, NeighborhoodPolicy
+
+            # Data
+            arms = ['Arm1', 'Arm2']
+            decisions = ['Arm1', 'Arm1', 'Arm2', 'Arm1']
+            rewards = [20, 17, 25, 9]
+
+            # Model 
+            mab = MAB(arms, LearningPolicy.UCB1(alpha=1.25))
+
+            # Train
+            mab.fit(decisions, rewards)
+
+            # Test
+            mab.predict()
+        `);
+
+        console.log(result);
+      }
+      main();
+    </script>
+  </body>
+</html>

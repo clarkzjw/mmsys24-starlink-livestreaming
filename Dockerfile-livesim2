@@ -1,0 +1,35 @@
+FROM --platform=$BUILDPLATFORM golang:1.20.6 as builder
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+WORKDIR /usr/src/app
+
+ADD https://api.github.com/repos/clarkzjw/livesim2/git/refs/heads/dev version.json
+
+RUN git clone -b dev https://github.com/clarkzjw/livesim2.git
+
+WORKDIR /usr/src/app/livesim2
+
+RUN go mod download && go mod tidy && go mod verify
+
+RUN make build
+
+FROM --platform=$BUILDPLATFORM ubuntu:23.04 as downloader
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+WORKDIR /livesim2
+
+RUN apt-get update && apt-get install -y ca-certificates wget unzip
+
+COPY --from=builder /usr/src/app/livesim2/out/livesim2 /livesim2/
+
+# RUN ./dashfetcher -a https://dash.akamaized.net/WAVE/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd
+# COPY stream.mpd /livesim2/WAVE/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/
+# RUN cd /livesim2/WAVE/vectors && mv cfhd_sets chdf_sets switching_sets/12.5_25_50/ss1/2023-04-28/
+
+RUN wget https://starlink-dash-live.jinwei.me/WAVE.zip && unzip WAVE.zip && rm WAVE.zip
+
+EXPOSE 8888
+
+CMD ["./livesim2", "--vodroot=./WAVE"]

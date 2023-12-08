@@ -1,0 +1,26 @@
+FROM --platform=$BUILDPLATFORM nginx:1.25.1
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+# No interactive frontend during docker build
+ENV DEBIAN_FRONTEND=noninteractive \
+    DEBCONF_NONINTERACTIVE_SEEN=true
+
+RUN apt-get update && apt-get install vim net-tools iputils-ping iproute2 python3 supervisor -y
+
+WORKDIR /etc/nginx
+
+RUN openssl req -nodes -x509 -newkey rsa:2048 -days 365 \
+    -subj "/C=CA/ST=BC/L=Victoria/O=UVic/CN=us-west.gcp.clarkzjw.ca" \
+    -keyout server-key.pem -out server-cert.pem
+
+COPY etc/nginx/conf.d/livesim2.conf /etc/nginx/conf.d/default.conf
+
+COPY shaper/supervisord.conf /etc
+COPY runner/tc.py /tc.py
+COPY shaper/entrypoint.sh /opt/bin/
+
+RUN  mkdir -p /var/run/supervisor /var/log/supervisor && chmod +x /opt/bin/entrypoint.sh
+
+ENTRYPOINT ["/opt/bin/entrypoint.sh"]
+CMD ["/opt/bin/entrypoint.sh"]

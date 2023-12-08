@@ -1,0 +1,162 @@
+[
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 3,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrCMAB"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 4,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrCMAB"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 5,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrCMAB"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 6,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrCMAB"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 3,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrL2A"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 4,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrL2A"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 5,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrL2A"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 6,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrL2A"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 3,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrLoLP"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 4,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrLoLP"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 5,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrLoLP"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 6,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrLoLP"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 3,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrDynamic"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 4,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrDynamic"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 5,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrDynamic"
+    },
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 300,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 6,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 10,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrDynamic"
+    }
+]
