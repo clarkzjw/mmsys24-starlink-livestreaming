@@ -1,0 +1,25 @@
+FROM --platform=$BUILDPLATFORM python:3.12.0
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+RUN apt-get update && \
+    apt-get install iputils-ping net-tools vim iproute2 pipx -y && \
+    pipx install poetry==1.7.1
+
+ENV PATH="${PATH}:/root/.local/bin"
+
+WORKDIR /app
+
+COPY poetry.lock pyproject.toml /app
+
+RUN poetry install
+
+ADD runner/*.py /app
+
+RUN mkdir -p /figures
+
+VOLUME /figures
+
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "batch_runner.py"]
