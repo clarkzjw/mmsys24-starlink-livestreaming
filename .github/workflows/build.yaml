@@ -41,12 +41,13 @@ jobs:
         name: Build and push Runner
         uses: docker/build-push-action@v4
         with:
-          context: runner
+          context: .
+          file: Dockerfile-runner
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.RUNNER_IMAGE }}:${{ env.TAG }}
   dashjs:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       -
         name: Checkout

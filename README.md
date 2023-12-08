@@ -1,4 +1,4 @@
-![Build](https://github.com/clarkzjw/starlink-dashjs-live/actions/workflows/build.yaml/badge.svg)
+![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg)
 
 ## Goal
 
