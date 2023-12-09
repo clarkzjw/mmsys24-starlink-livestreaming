@@ -63,12 +63,7 @@ sudo sysctl -w net.core.rmem_max=2500000
 sudo sysctl -w net.core.wmem_max=2500000
 ```
 
-### File Watch Limit
-https://stackoverflow.com/a/55543310
 
-```bash
-echo fs.inotify.max_user_watches= 131070 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-```
 
 ### CMAF
 
@@ -164,3 +159,27 @@ SSH login to the new VM, wait until `/var/log/cloud-init-output.log` is finished
 
 Cloud-init v. 23.1.2-0ubuntu0~23.04.1 finished at Fri, 08 Dec 2023 23:20:04 +0000. Datasource DataSourceGCELocal.  Up 1117.00 seconds
 ```
+
+apply File Watch Limit adjustment
+
+```bash
+echo fs.inotify.max_user_watches= 131070 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
+For real world experiments, deploy live video streaming server on the cloud VM by
+
+```bash
+docker compose -f docker-compose-ingest.yaml up -d
+```
+
+after that, the MPD file can be retrieved at
+
+`https://<cloud-vm-ip>/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd`
+
+you might want to use the broswer to visit the URL once to acknowledge the insecure HTTPS warning.
+
+update `experiment.json` with this new MPD_URL
+
+and test it can be played back at dash.js sample player
+
+https://reference.dashif.org/dash.js/latest/samples/low-latency/testplayer/testplayer.html
