@@ -41,9 +41,9 @@ class Experiment:
     ABR_ALGORITHM: str
     MIN_CATCHUP_PLAYBACK_RATE: float
     MAX_CATCHUP_PLAYBACK_RATE: float
+    CATCH_UP: str
     EMULATION: bool = False
     CMAB_ALPHA: float = 0.5
-    CATCH_UP: str
 
     
     def __init__(self, obj: dict):
