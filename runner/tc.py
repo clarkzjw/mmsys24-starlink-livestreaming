@@ -34,8 +34,8 @@ def set_delay():
     # Add child qdisc with netem under the root
     # tc qdisc change dev eth0 parent 1:1 handle 10: netem delay 100ms 10ms 25% loss 50%
 
-    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "1kbit", "burst", "16kbit", "latency", "500ms"])
-    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "parent", "1:1", "handle", "10:", "netem", "delay", "100ms", "10ms", "25%", "loss", "50%"])
+    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "50mbit", "burst", "16kbit", "latency", "100ms"])
+    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "parent", "1:1", "handle", "10:", "netem", "delay", "100ms", "10ms", "25%", "loss", "5%"])
 
 
 def tc_reset():
