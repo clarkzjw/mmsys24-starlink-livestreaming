@@ -1,7 +1,7 @@
 import logging
 
 from single_runner import run_once
-from config import load_config
+from config import load_config, VIDEO
 from video import create_ffmpeg_container
 
 logging.basicConfig(
@@ -24,9 +24,11 @@ if __name__ == "__main__":
             exp_id = "{}-{}".format(exp_list[i].EXPERIMENT_ID, j)
             logger.info("running {}, ({}/{})".format(exp_id, count, total_count))
 
-            container = create_ffmpeg_container(exp_id)
+            if VIDEO:
+                container = create_ffmpeg_container(exp_id)
 
             run_once(exp_id, exp_list[i])
 
-            container.stop()
-            container.remove()
+            if VIDEO:
+                container.stop()
+                container.remove()

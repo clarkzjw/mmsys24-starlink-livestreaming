@@ -10,6 +10,7 @@ URL = "http://pyodide/samples/starlink/testplayer/testplayer.html?"
 VIDEO_CONTAINER_IMAGE = "selenium/video:ffmpeg-4.3.1-20230607"
 CHROME_CONTAINER_IP = "192.167.0.102"
 DOCKER_NETWORK_NAME = "dashjs"
+VIDEO = os.getenv("VIDEO", "True").lower() in ('true', '1', 't')
 
 
 def get_exp_date() -> str:
