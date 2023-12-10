@@ -1,3 +1,4 @@
+experiments/gcp_cmab/
 batch.json
 .venv/
 pyodide-0.23.4.tar.bz2
@@ -5,7 +6,6 @@ pyodide/
 whl/
 *.whl
 __pycache__/
-figures
 .env
 videos
 *.png
