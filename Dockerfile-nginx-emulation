@@ -18,6 +18,7 @@ COPY etc/nginx/conf.d/livesim2.conf /etc/nginx/conf.d/default.conf
 
 COPY shaper/supervisord.conf /etc
 COPY runner/tc.py /tc.py
+COPY runner/tc-trace.py /tc-trace.py
 COPY shaper/entrypoint.sh /opt/bin/
 
 RUN  mkdir -p /var/run/supervisor /var/log/supervisor && chmod +x /opt/bin/entrypoint.sh
