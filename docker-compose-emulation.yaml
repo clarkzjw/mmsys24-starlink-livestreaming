@@ -31,7 +31,7 @@ services:
     privileged: true
     # command: ["sleep", "infinity"]
     volumes:
-      - ./experiments/batch.json:/batch.json
+      - ./experiments/batch-emulation.json:/batch.json
       - ./figures:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
