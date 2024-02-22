@@ -14,17 +14,17 @@ def set_static_delay(rtt: int):
     if rtt == 0 or rtt == -1:
         rtt = 100
         loss = 100
-    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "50mbit", "burst", "16kbit", "latency", "{}ms".format(rtt)])
+    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "50mbit", "burst", "10mb", "latency", "{}ms".format(rtt)])
     subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "parent", "1:1", "handle", "10:", "netem", "delay", "{}ms".format(rtt), "loss", "{}%".format(loss)])
 
 
 def tc_reset():
-    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "100mbit", "burst", "16kbit", "latency", "40ms"])
+    subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "50mbit", "burst", "10mb", "latency", "40ms"])
     subprocess.check_output(["tc", "qdisc", "change", "dev", ETHERNET, "parent", "1:1", "handle", "10:", "netem", "delay", "40ms", "1ms", "25%", "loss", "0.1%"])
 
 
 def tc_init():
-    subprocess.check_output(["tc", "qdisc", "add", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "100mbit", "burst", "16kbit", "latency", "40ms" ])
+    subprocess.check_output(["tc", "qdisc", "add", "dev", ETHERNET, "root", "handle", "1:", "tbf", "rate", "50mbit", "burst", "10mb", "latency", "40ms" ])
     subprocess.check_output(["tc", "qdisc", "add", "dev", ETHERNET, "parent", "1:1", "handle", "10:", "netem", "delay", "40ms"])
 
 

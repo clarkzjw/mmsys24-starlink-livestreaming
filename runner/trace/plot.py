@@ -11,7 +11,6 @@ def time_series_plot(filename: str, seq_list: list[int], rtt_list: list[float]) 
     ax = fig.add_subplot(111)
 
     ax.plot(seq_list, rtt_list, '.')
-    # ax.set_xlim(0, len(seq_list))
     plt.title(filename)
     plt.tight_layout()
     plt.savefig(str(filename) + ".png")

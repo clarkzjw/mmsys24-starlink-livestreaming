@@ -35,8 +35,6 @@ def plot(filename: str):
             if count == 0:
                 count += 1
                 continue
-            if count > 6000:
-                break
             count += 1
             seq_list.append(float(row[0]))
             rtt_list.append(float(row[2]))

@@ -25,10 +25,13 @@ services:
 
   runner:
     image: clarkzjw/dashjs-runner:master
+    build:
+      context: .
+      dockerfile: Dockerfile-runner
     privileged: true
-    command: ["sleep", "infinity"]
+    # command: ["sleep", "infinity"]
     volumes:
-      - ./batch.json:/batch.json
+      - ./experiments/batch.json:/batch.json
       - ./figures:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:

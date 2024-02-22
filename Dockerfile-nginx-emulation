@@ -6,7 +6,7 @@ ARG BUILDPLATFORM
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-RUN apt-get update && apt-get install vim net-tools iputils-ping iproute2 python3 supervisor -y
+RUN apt-get update && apt-get install vim net-tools iputils-ping iproute2 python3 supervisor iperf3 -y
 
 WORKDIR /etc/nginx
 
