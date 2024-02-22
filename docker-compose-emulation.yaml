@@ -90,8 +90,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-nginx-emulation
+    container_name: dashjs-nginx
     volumes:
-      - ./runner/trace/trace.csv:/trace/trace.csv
+      - ./runner/trace/isl-trace.csv:/trace/trace.csv
     ports:
       - 443:443
     restart: always

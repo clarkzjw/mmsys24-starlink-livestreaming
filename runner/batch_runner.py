@@ -2,7 +2,7 @@ import logging
 
 from single_runner import run_once
 from config import load_config, VIDEO
-from video import create_ffmpeg_container
+from video import create_ffmpeg_container, restart_nginx
 
 logging.basicConfig(
     level=logging.INFO,
@@ -26,6 +26,8 @@ if __name__ == "__main__":
 
             if VIDEO:
                 container = create_ffmpeg_container(exp_id)
+
+            restart_nginx()
 
             run_once(exp_id, exp_list[i])
 

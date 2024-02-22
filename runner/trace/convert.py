@@ -1,8 +1,10 @@
 import csv
 import math
+from pathlib import Path
 
 
-with open("irtt.csv", "r") as trace:
+filename = "./irtt/seychelles-irtt-10ms-1h-2024-01-30-01-00-00.csv"
+with open(filename, "r") as trace:
     reader = csv.reader(trace)
     count = 0
     init_time = 0
