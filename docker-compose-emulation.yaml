@@ -87,6 +87,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-nginx-emulation
+    volumes:
+      - ./runner/trace/trace.csv:/trace/trace.csv
     ports:
       - 443:443
     restart: always
