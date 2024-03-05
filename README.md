@@ -1,5 +1,13 @@
 ![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg)
 
+**[WIP]** 
+
+This repository contains the implementation for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
+
+We are currently preparing the code to be released aligning with the camera-ready submission.
+
+---
+
 ## Goal
 
 + Measure the performance of state-of-the-art dash.js low latency live streaming ABR algorithms under Starlink network
