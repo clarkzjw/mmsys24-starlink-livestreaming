@@ -56,6 +56,20 @@ This repository features three distinct levels of reproducibilities.
 
 To re-generate the figures in the paper, please follow the following steps.
 
+Download the raw data of our results.
+
+```bash
+git submodule init
+git submodule update --recursive
+```
+
+In the root directory of the project, run
+
+```bash
+sudo docker run --rm -v ${PWD}/paper-data/data:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility
+```
+
+After the command finishes, the figures in the paper will be generated in the `paper-figures` folder.
 
 ## Emulation
 
