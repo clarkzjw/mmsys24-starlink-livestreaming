@@ -2,6 +2,15 @@
 
 ![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg)
 
+Table of Contents
+=================
+
+  * [Repository structure](#repository-structure)
+  * [Prerequisites](#prerequisites)
+  * [Re-generate paper results](#re-generate-paper-results)
+  * [Emulation](#emulation)
+  * [Real world experiments](#real-world-experiments)
+
 This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
 ## Repository structure
