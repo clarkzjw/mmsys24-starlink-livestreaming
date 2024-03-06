@@ -1,19 +1,19 @@
 version: '3.1'
 services:
   dashjs:
-    image: clarkzjw/dashjs
+    image: clarkzjw/dashjs:master
     ports:
       - "3000"
     restart: always
 
   nginx:
-    image: clarkzjw/dashjs-nginx
+    image: clarkzjw/dashjs-nginx:master
     ports:
       - 443:443
     restart: always
 
   livesim2:
-    image: clarkzjw/dashjs-livesim2
+    image: clarkzjw/dashjs-livesim2:master
     ports:
       - 8888:8888
     restart: always
