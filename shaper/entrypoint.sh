@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-/usr/bin/supervisord --configuration /etc/supervisord.conf &
+/usr/bin/supervisord --configuration /etc/supervisor/supervisord.conf &
 
 SUPERVISOR_PID=$!
 

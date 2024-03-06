@@ -25,9 +25,13 @@ services:
 
   runner:
     image: clarkzjw/dashjs-runner:master
+    build:
+      context: .
+      dockerfile: Dockerfile-runner
     privileged: true
+    # command: ["sleep", "infinity"]
     volumes:
-      - ./batch.json:/batch.json
+      - ./experiments/batch-emulation.json:/batch.json
       - ./figures:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
@@ -83,6 +87,12 @@ services:
   # traffic shaper installed
   nginx:
     image: clarkzjw/dashjs-nginx:emulation
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx-emulation
+    container_name: dashjs-nginx
+    volumes:
+      - ./runner/trace/isl-trace.csv:/trace/trace.csv
     ports:
       - 443:443
     restart: always

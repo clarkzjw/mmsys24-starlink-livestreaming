@@ -6,7 +6,7 @@ ARG BUILDPLATFORM
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-RUN apt-get update && apt-get install vim net-tools iputils-ping iproute2 python3 supervisor -y
+RUN apt-get update && apt-get install vim net-tools iputils-ping iproute2 python3 supervisor iperf3 -y
 
 WORKDIR /etc/nginx
 
@@ -16,11 +16,14 @@ RUN openssl req -nodes -x509 -newkey rsa:2048 -days 365 \
 
 COPY etc/nginx/conf.d/livesim2.conf /etc/nginx/conf.d/default.conf
 
-COPY shaper/supervisord.conf /etc
+COPY shaper/supervisord.conf /etc/supervisor/supervisord.conf
 COPY runner/tc.py /tc.py
+COPY runner/tc-trace.py /tc-trace.py
 COPY shaper/entrypoint.sh /opt/bin/
 
 RUN  mkdir -p /var/run/supervisor /var/log/supervisor && chmod +x /opt/bin/entrypoint.sh
+
+ENV PYTHONUNBUFFERED 1
 
 ENTRYPOINT ["/opt/bin/entrypoint.sh"]
 CMD ["/opt/bin/entrypoint.sh"]
