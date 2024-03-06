@@ -7,25 +7,25 @@ This repository contains the implementation and artifacts for the paper *Low-Lat
 ## Repository structure
 
 ```
-├── batch.json.example
-├── docker-compose-emulation.yaml
-├── docker-compose-ingest.yaml
-├── docker-compose.yaml
-├── Dockerfile-dashjs
-├── Dockerfile-livesim2
-├── Dockerfile-nginx
-├── Dockerfile-nginx-emulation
-├── Dockerfile-runner
-├── etc
-├── experiments
+├── docker-compose-emulation.yaml   # docker compose file for network emulation
+├── docker-compose-server.yaml      # docker compose file for the media server in real world experiments
+├── docker-compose.yaml             # docker compose file for the streaming client in real world experiments
+├── Dockerfile-dashjs               # Dockerfile to build custom dash.js
+├── Dockerfile-livesim2             # Dockerfile to build livesim2
+├── Dockerfile-nginx                # Dockerfile to build nginx
+├── Dockerfile-nginx-emulation      # Dockerfile to build nginx with traffic shaper in network emulation
+├── Dockerfile-runner               # Dockerfile to build experiment runner
+├── etc                             # nginx config files
+├── experiments                     # experiment config files
+├── paper-data                      # git submodule for the data used to generate figures in the paper
 ├── poetry.lock
 ├── pyproject.toml
 ├── README.md
-├── runner
-├── shaper
-├── stats-server
-├── terraform
-└── webassembly
+├── runner                          # experiment scheduler and runner
+├── shaper                          # config files for the traffic shaper in network emulation
+├── stats-server                    # backend server to store playback metrics
+├── terraform                       # Terraform template to provision VM on GCP
+└── webassembly                     # Dockerfile to build custom pyodide WebAssembly Python runtime
 ```
 
 ---
@@ -76,6 +76,10 @@ sudo docker run --rm -v ${PWD}/paper-data/data:/data -v ${PWD}/paper-figures:/ap
 After the command finishes, the figures in the paper will be generated in the `paper-figures` folder.
 
 ## Emulation
+
+The topology for our network emulator is shown as follows.
+
+![Network Emulator](./assets/Emulation-Testbed.png)
 
 To conduct video streaming using our purpose-built network emulator, please follow the following steps.
 
@@ -142,6 +146,10 @@ sudo docker compose -f docker-compose-emulation.yaml down
 
 ## Real world experiments
 
+The topology for our real world experiment is shown as follows.
+
+![Testbed](./assets/Starlink-Testbed.png)
+
 To conduct video streaming over real networks, please follow the following steps.
 
 ***Note***
@@ -196,8 +204,8 @@ sudo sysctl -w net.core.wmem_max=2500000
 For real world experiments, deploy live video streaming media server on the VM by
 
 ```bash
-sudo docker compose -f docker-compose-ingest.yaml pull
-sudo docker compose -f docker-compose-ingest.yaml up -d
+sudo docker compose -f docker-compose-server.yaml pull
+sudo docker compose -f docker-compose-server.yaml up -d
 ```
 
 3. The MPD file will be retrieved at
