@@ -2,8 +2,6 @@
 
 ![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg)
 
-**[WIP]** 
-
 This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
 ## Repository structure
@@ -34,9 +32,9 @@ This repository contains the implementation and artifacts for the paper *Low-Lat
 
 ## Prerequisites
 
-Any system capable of running recent versions of [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/) should suffice. The results of this paper were produced on Debian 12.5 x86-64 with Docker version 25.0.3 and the built-in [Compose plugin](https://docs.docker.com/compose/install/linux/) version 2.24.5. However, the [Compose standalone](https://docs.docker.com/compose/install/standalone/) should also work.
+Any system capable of running recent versions of [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/) should suffice. The results of this paper were produced on Debian 12.5 x86-64 with Docker version 25.0.3 and the [Compose plugin](https://docs.docker.com/compose/install/linux/) version 2.24.5. However, the [Compose standalone](https://docs.docker.com/compose/install/standalone/) should also work.
 
-To install Docker and Docker compose plugin on a recent Linux distribution, you can use the following script.
+To install Docker and Docker compose plugin on a recent Linux distribution, you can use the following automated installation script.
 
 ```bash
 curl -fsSL https://get.docker.com | sh
@@ -56,6 +54,12 @@ This repository features three distinct levels of reproducibilities.
 
 To re-generate the figures in the paper, please follow the following steps.
 
+Clone this repository.
+
+```bash
+git clone https://github.com/clarkzjw/mmsys24-starlink-livestreaming.git
+```
+
 Download the raw data of our results.
 
 ```bash
@@ -63,7 +67,7 @@ git submodule init
 git submodule update --recursive
 ```
 
-In the root directory of the project, run
+In the root directory of this repository, run
 
 ```bash
 sudo docker run --rm -v ${PWD}/paper-data/data:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility
@@ -75,14 +79,32 @@ After the command finishes, the figures in the paper will be generated in the `p
 
 To conduct video streaming using our purpose-built network emulator, please follow the following steps.
 
+```bash
+sudo docker compose -f docker-compose-emulation.yaml pull
+sudo docker compose -f docker-compose-emulation.yaml up -d
+```
+
+You can update the experiment parameters in [experiments/batch-emulation.json](./experiments/batch-emulation.json) file.
+
+A convenience container is available to display the video streaming browser output using noVNC, by visiting `http://<host-ip>:7900/?autoconnect=1&resize=scale&password=secret`.
+
+You can check the experment process and logs by
+
+```bash
+sudo docker logs -f runner
+```
+
+After the command finishes, the raw data will be generated in the `figures-emulation` folder. Then, you can use the similar command as in [Re-generate paper results](#re-generate-paper-results) to generate the figures.
+
+```bash
+sudo docker run --rm -v ${PWD}/figures-emulation:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility
+```
 
 ## Real world experiments
 
 To conduct video streaming over real networks, please follow the following steps.
 
-
-
-
+The results for the "Starlink" and "Terrestrial" scenarios in the paper are generated with a media server VM provisioned at the Google Cloud Platform (GCP). A convenience Terraform script is provided to provision VM at GCP. However, if you are using other cloud providers to provision VM as a media server or you are using local servers, you can jump to [Media VM Setup](#media-vm-setup).
 
 ### Install Terraform
 
@@ -111,6 +133,8 @@ SSH login to the new VM, wait until `/var/log/cloud-init-output.log` is finished
 
 Cloud-init v. 23.1.2-0ubuntu0~23.04.1 finished at Fri, 08 Dec 2023 23:20:04 +0000. Datasource DataSourceGCELocal.  Up 1117.00 seconds
 ```
+
+### Media VM Setup
 
 apply File Watch Limit adjustment
 

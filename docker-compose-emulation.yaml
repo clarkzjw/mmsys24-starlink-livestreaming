@@ -27,8 +27,8 @@ services:
     image: clarkzjw/dashjs-runner:master
     privileged: true
     volumes:
-      - ./batch.json:/batch.json
-      - ./figures:/figures
+      - ./experiments/batch-emulation.json:/batch.json
+      - ./figures-emulation:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WORKDIR=${PWD}
