@@ -97,4 +97,4 @@ def run_once(EXPERIMENT_ID: str, exp: Experiment) -> None:
         logger.error(str(e))
 
     logger.info("generating figures")
-    generate_plots(EXPERIMENT_ID, exp.ROUND_DURATION, exp.TARGET_LATENCY, exp.CONSTANT_VIDEO_BITRATE)
+    generate_plots(EXPERIMENT_ID, exp.ROUND_DURATION, exp.TARGET_LATENCY, exp.CONSTANT_VIDEO_BITRATE, exp.EMULATION)

@@ -25,17 +25,18 @@ services:
 
   runner:
     image: clarkzjw/dashjs-runner:master
+    container_name: dashjs-runner
     build:
       context: .
       dockerfile: Dockerfile-runner
     privileged: true
-    # command: ["sleep", "infinity"]
     volumes:
-      - ./experiments/batch-emulation.json:/batch.json
-      - ./figures-emulation:/figures
+      - ./experiments/batch-example.json:/batch.json
+      - ./figures:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WORKDIR=${PWD}
+      - VIDEO=0
     depends_on:
       - dashjs
       - chrome
@@ -119,7 +120,6 @@ services:
     networks:
       dashjs:
         ipv4_address: 192.167.0.109
-
 
 volumes:
   mongodb:

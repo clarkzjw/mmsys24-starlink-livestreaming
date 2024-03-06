@@ -34,3 +34,5 @@ if __name__ == "__main__":
             if VIDEO:
                 container.stop()
                 container.remove()
+
+    logger.info("Video Streaming completed.")

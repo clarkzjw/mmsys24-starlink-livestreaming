@@ -19,6 +19,8 @@ FIGURE_DIR = "/figures/"
 MONGO_DB_ADDR = "mongo"
 MONGO_DB_NAME = "starlink"
 EXPERIMENT_ID = os.getenv("EXPERIMENT_ID")
+LATENCY_TARGET = os.getenv("TARGET_LATENCY")
+EMULATION_MODE = False
 
 client = MongoClient("mongodb://starlink:starlink@{}:27017/".format(MONGO_DB_ADDR))
 db = client[MONGO_DB_NAME]
@@ -37,7 +39,10 @@ METRIC_REP_SWITCH_LIST = "RepSwitchList"
 
 
 def get_result_dir() -> pathlib.PosixPath:
-    path = pathlib.Path(FIGURE_DIR).joinpath(EXPERIMENT_ID)
+    if EMULATION_MODE:
+        path = pathlib.Path(FIGURE_DIR).joinpath("emulation").joinpath("target-{}s".format(LATENCY_TARGET)).joinpath(EXPERIMENT_ID)
+    else:
+        path = pathlib.Path(FIGURE_DIR).joinpath("target-{}s".format(LATENCY_TARGET)).joinpath(EXPERIMENT_ID)
     os.makedirs(path, exist_ok=True)
     return path
 
@@ -132,17 +137,6 @@ def plot_bitrate_switch_temporal():
     write_metric(rep_switch_events, get_result_dir().joinpath("bitrate_switch.json"))
 
 
-# def plot_latency_temporal():
-#     timestamp, latency = get_metric_data(LATENCY)
-
-#     plt.plot(timestamp, latency, label="Latency to Live (second)")
-#     plt.legend(loc="upper left")
-#     plt.xlabel("Seconds")
-#     plt.ylabel("Playback live latency to Live (second)")
-#     plt.savefig(FIGURE_DIR + EXPERIMENT_ID + "-latency" + ".png")
-#     plt.close()
-
-
 def plot_buffer_temporal():
     timestamp, buffer = get_metric_data(BUFFER)
 
@@ -231,9 +225,13 @@ def write_qoe():
     write_metric(live_latency, get_result_dir().joinpath("currentLiveLatency.json"))
 
 
-def generate_plots(EXP_ID: str, ROUND_DURATION, TARGET_LATENCY, CONSTANT_VIDEO_BITRATE: int):
+def generate_plots(EXP_ID: str, ROUND_DURATION, TARGET_LATENCY, CONSTANT_VIDEO_BITRATE: int, EMULATION: bool):
     global EXPERIMENT_ID
+    global LATENCY_TARGET
+    global EMULATION_MODE
     EXPERIMENT_ID = EXP_ID
+    LATENCY_TARGET = TARGET_LATENCY
+    EMULATION_MODE = EMULATION
 
     plot_buffer_temporal()
     plot_bitrate_by_second()

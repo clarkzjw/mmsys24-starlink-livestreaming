@@ -1,0 +1,13 @@
+[
+    {
+        "EMULATION": true,
+        "ROUND_DURATION": 60,
+        "CMAB_ALPHA": 1.0,
+        "TARGET_LATENCY": 3,
+        "CONSTANT_VIDEO_BITRATE": -1,
+        "TOTAL_ROUNDS": 1,
+        "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
+        "ABR_ALGORITHM": "abrCMAB",
+        "CATCH_UP": "liveCatchupModeLoLP"
+    }
+]
