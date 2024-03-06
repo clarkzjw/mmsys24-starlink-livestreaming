@@ -1,4 +1,9 @@
 paper-figures/
+figures/
+lagos/
+test/
+victoria/
+.tar.zst
 experiments/gcp_cmab/
 batch.json
 .venv/

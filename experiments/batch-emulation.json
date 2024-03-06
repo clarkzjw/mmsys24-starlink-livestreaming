@@ -29,7 +29,8 @@
         "CONSTANT_VIDEO_BITRATE": -1,
         "TOTAL_ROUNDS": 10,
         "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
-        "ABR_ALGORITHM": "abrCMAB"
+        "ABR_ALGORITHM": "abrCMAB",
+        "CATCH_UP": "liveCatchupModeLoLP"
     },
     {
         "EMULATION": true,
@@ -39,7 +40,8 @@
         "CONSTANT_VIDEO_BITRATE": -1,
         "TOTAL_ROUNDS": 10,
         "MPD_URL": "https://nginx/livesim2/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd",
-        "ABR_ALGORITHM": "abrCMAB"
+        "ABR_ALGORITHM": "abrCMAB",
+        "CATCH_UP": "liveCatchupModeLoLP"
     },
     {
         "EMULATION": true,

@@ -3,7 +3,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
 RUN apt-get update && \
-    apt-get install iputils-ping net-tools vim iproute2 pipx -y && \
+    apt-get install iputils-ping net-tools vim iproute2 pipx iperf3 -y && \
     pipx install poetry==1.7.1
 
 ENV PATH="${PATH}:/root/.local/bin"

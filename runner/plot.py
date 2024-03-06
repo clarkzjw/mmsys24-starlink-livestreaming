@@ -203,6 +203,14 @@ def plot_bitrate_by_second():
     write_metric(averaged_bitrate_by_second, get_result_dir().joinpath("bitrate_by_second.json"))
 
 
+def plot_qoe(qoe):
+    plt.plot(qoe, label="QoE", linestyle='None', marker="x")
+    plt.legend(loc="upper left")
+    plt.ylabel("QoE")
+    plt.savefig(get_result_dir().joinpath("qoe.png"))
+    plt.close()
+
+
 def write_qoe():
     cursor = db["qoe-{}".format(EXPERIMENT_ID)].find({})
     qoe = []
@@ -217,6 +225,7 @@ def write_qoe():
             elif m == "currentLiveLatency":
                 live_latency.append(c["type"]["currentLiveLatency"])
 
+    plot_qoe(qoe)
     write_metric(qoe, get_result_dir().joinpath("qoe.json"))
     write_metric(arms, get_result_dir().joinpath("arms.json"))
     write_metric(live_latency, get_result_dir().joinpath("currentLiveLatency.json"))
