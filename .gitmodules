@@ -1,0 +1,3 @@
+[submodule "paper-data"]
+	path = paper-data
+	url = https://github.com/clarkzjw/mmsys24-starlink-livestreaming-data.git

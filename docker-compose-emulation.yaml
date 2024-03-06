@@ -32,7 +32,7 @@ services:
     # command: ["sleep", "infinity"]
     volumes:
       - ./experiments/batch-emulation.json:/batch.json
-      - ./figures:/figures
+      - ./figures-emulation:/figures
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WORKDIR=${PWD}
