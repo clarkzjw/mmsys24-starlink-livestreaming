@@ -1,3 +1,11 @@
 [submodule "paper-data"]
 	path = paper-data
 	url = https://github.com/clarkzjw/mmsys24-starlink-livestreaming-data.git
+[submodule "dash.js"]
+	path = dash.js
+	url = https://github.com/clarkzjw/dash.js.git
+	branch = starlink
+[submodule "livesim2"]
+	path = livesim2
+	url = https://github.com/clarkzjw/livesim2.git
+	branch = dev

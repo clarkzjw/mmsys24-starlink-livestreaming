@@ -16,6 +16,8 @@ This repository contains the implementation and artifacts for the paper *Low-Lat
 ## Repository structure
 
 ```
+├── assets                          # figures for README.md
+├── dash.js                         # git submodule for the modified dash.js player
 ├── docker-compose-emulation.yaml   # docker compose file for network emulation
 ├── docker-compose-server.yaml      # docker compose file for the media server in real world experiments
 ├── docker-compose.yaml             # docker compose file for the streaming client in real world experiments
@@ -26,6 +28,7 @@ This repository contains the implementation and artifacts for the paper *Low-Lat
 ├── Dockerfile-runner               # Dockerfile to build experiment runner
 ├── etc                             # nginx config files
 ├── experiments                     # experiment config files
+├── livesim2                        # git submodule for livesim2
 ├── paper-data                      # git submodule for the data used to generate figures in the paper
 ├── poetry.lock
 ├── pyproject.toml
@@ -61,19 +64,13 @@ This repository features three distinct levels of reproducibilities.
 
 ## Re-generate paper results
 
-To re-generate the figures in the paper, please follow the following steps.
+To re-generate the figures in the paper, you can either follow the following steps or use the code capsule on [Code Ocean](https://codeocean.com/).
 
 Clone this repository.
 
 ```bash
 git clone https://github.com/clarkzjw/mmsys24-starlink-livestreaming.git
-```
-
-Download the raw data of our results.
-
-```bash
-git submodule init
-git submodule update --recursive
+git submodule update --init --recursive
 ```
 
 In the root directory of this repository, run
@@ -141,10 +138,10 @@ The raw data will be available in the `figures-emulation` folder.
 
 7. Then, you can use the similar command as in [Re-generate paper results](#re-generate-paper-results) to generate the figures.
 
-***Note***: The figure generation scripts in the `clarkzjw/mmsys24-reproducibility` Docker image only support three different folder names within the `${PWD}/figures` directory, i.e., `emulation`, `starlink` and `terrestrial`. You can copy our results for `starlink` and `terrestrial` from [`paper-data/data`](./paper-data/data) to your `figures` directory and generate figures for evaluation and comparison.
+***Note***: The figure generation scripts in the `clarkzjw/mmsys24-reproducibility` Docker image only support three different experiment scenario names within the `${PWD}/figures` directory, i.e., `emulation`, `starlink` and `terrestrial`. You can copy our results for `starlink` and `terrestrial` from [`paper-data/data`](./paper-data/data) to your `figures` directory and generate figures for evaluation and comparison.
 
 ```bash
-sudo docker run --rm -v ${PWD}/figures:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility
+sudo docker run --rm -v ${PWD}/figures-emulation:/data -v ${PWD}/paper-figures:/app/src/figures -it clarkzjw/mmsys24-reproducibility
 ```
 
 8. After finishing the emulation, you can cleanup the resources by
