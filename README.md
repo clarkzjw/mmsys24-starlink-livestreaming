@@ -1,6 +1,6 @@
 # MMSys'24 Artifact "Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH"
 
-![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg)
+![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg) [![](https://img.shields.io/badge/MMSys'24-Paper-blue)]()
 
 Table of Contents
 =================
@@ -11,7 +11,7 @@ Table of Contents
   * [Emulation](#emulation)
   * [Real world experiments](#real-world-experiments)
   * [Extensions](#extensions)
-  * [LICENSE](#license)
+  * [License](#license)
 
 This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
@@ -242,6 +242,6 @@ RUN wget https://starlink-dash-live.jinwei.me/WAVE.zip && unzip WAVE.zip && rm W
 
 and rebuild the `livesim2` Docker image and replace the image used by the `livesim2` service in the corresponding `docker-compose.yaml` file.
 
-## LICENSE
+## License
 
 The code in this repository is licensed under [GPL-3.0](./LICENSE).
