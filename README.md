@@ -10,6 +10,7 @@ Table of Contents
   * [Re-generate paper results](#re-generate-paper-results)
   * [Emulation](#emulation)
   * [Real world experiments](#real-world-experiments)
+  * [Extensions](#extensions)
 
 This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
@@ -223,3 +224,19 @@ sudo docker compose -f docker-compose-server.yaml up -d
 5. Update [`experiments/batch-experiment.json`](./experiments/batch-experiment.json) with the new MPD_URL by replacing `<ip-or-domain-of-the-media-server>`.
 
 6. The following steps are similar to [network emulation](#emulation), but you need to replace `docker-compose-emulation.yaml` with `docker-compose.yaml` in the command.
+
+## Extensions
+
+### Custom video dataset
+
+To replace the default bitrate ladder and use custom video datasets, replace and update the following lines in [Dockerfile-livesim2](./Dockerfile-livesim2) accordingly,
+
+```Dockerfile
+# RUN ./dashfetcher -a https://dash.akamaized.net/WAVE/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/stream.mpd
+# COPY stream.mpd /livesim2/WAVE/vectors/switching_sets/12.5_25_50/ss1/2023-04-28/
+# RUN cd /livesim2/WAVE/vectors && mv cfhd_sets chdf_sets switching_sets/12.5_25_50/ss1/2023-04-28/
+
+RUN wget https://starlink-dash-live.jinwei.me/WAVE.zip && unzip WAVE.zip && rm WAVE.zip
+```
+
+and rebuild the `livesim2` Docker image and replace the image used by the `livesim2` service in the corresponding `docker-compose.yaml` file.
