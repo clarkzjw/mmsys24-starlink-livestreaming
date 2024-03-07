@@ -11,6 +11,7 @@ Table of Contents
   * [Emulation](#emulation)
   * [Real world experiments](#real-world-experiments)
   * [Extensions](#extensions)
+  * [LICENSE](#license)
 
 This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
@@ -240,3 +241,7 @@ RUN wget https://starlink-dash-live.jinwei.me/WAVE.zip && unzip WAVE.zip && rm W
 ```
 
 and rebuild the `livesim2` Docker image and replace the image used by the `livesim2` service in the corresponding `docker-compose.yaml` file.
+
+## LICENSE
+
+The code in this repository is licensed under [GPL-3.0](./LICENSE).
