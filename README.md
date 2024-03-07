@@ -66,7 +66,7 @@ This repository features three distinct levels of reproducibilities.
 
 ## Re-generate paper results
 
-To re-generate the figures in the paper, you can either follow the following steps or use the code capsule on [Code Ocean](https://codeocean.com/).
+To re-generate the figures in the paper, you can either follow the following steps or directly use the code capsule on [Code Ocean](https://codeocean.com/) at [DOI: 10.24433/CO.7355266.v1](https://doi.org/10.24433/CO.7355266.v1).
 
 Clone this repository.
 
