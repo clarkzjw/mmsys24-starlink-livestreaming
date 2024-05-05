@@ -1,6 +1,10 @@
 # MMSys'24 Artifact "Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH"
 
-![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg) [![](https://img.shields.io/badge/MMSys'24-Paper-blue)]()
+![Build](https://github.com/clarkzjw/mmsys24-starlink-livestreaming/actions/workflows/build.yaml/badge.svg) [![](https://img.shields.io/badge/MMSys'24-Paper-blue)](https://dl.acm.org/doi/10.1145/3625468.3647616)
+
+This repository contains the implementation and artifacts for the paper ***[Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH](https://dl.acm.org/doi/10.1145/3625468.3647616)*** published in ACM MMSys'24.
+
+**We received the [DASH-IF Excellence in DASH Award Third Place](https://dashif.org/news/mmsys2024/) at MMSys'24**
 
 Table of Contents
 =================
@@ -12,8 +16,6 @@ Table of Contents
   * [Real world experiments](#real-world-experiments)
   * [Extensions](#extensions)
   * [License](#license)
-
-This repository contains the implementation and artifacts for the paper *Low-Latency Live Video Streaming over a Low-Earth-Orbit Satellite Network with DASH* accepted by ACM MMSys'24.
 
 ## Repository structure
 
